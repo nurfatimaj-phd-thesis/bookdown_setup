@@ -1,0 +1,7 @@
+`r if(knitr:::is_latex_output()) '\\startappendices'`
+
+`r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'` 
+
+<!-- Your appendix goes here -->
+
+`r if(knitr:::is_latex_output()) '\\finishappendices'`

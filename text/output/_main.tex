@@ -1,0 +1,187 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage[normalem]{ulem}
+\usepackage[colorlinks, 
+            linktoc = true, 
+            allcolors = blue, 
+            bookmarksopen = true, 
+            pdfpagelabels,
+            hidelinks = ]{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cleveref}
+\usepackage{graphicx}
+\usepackage{appendix}
+\usepackage{color}
+\usepackage[format=hang, 
+			      labelfont = bf, 
+			      textfont = bf]{caption}
+\usepackage{subcaption}
+\usepackage{ragged2e}
+\usepackage{rotating}
+\usepackage[top = 2cm, bottom = 2cm, left = 3cm, right = 2cm]{geometry}
+%\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{positioning, decorations.pathreplacing, calc}
+\usepackage[style = authoryear, 
+            giveninits = true, 
+            date = year, 
+            sorting = nyt, 
+            backend = biber, 
+            doi = false, 
+            isbn = false, 
+            url = false, 
+            uniquename = false, 
+            eprint = false, 
+            related = false, 
+            dashed = false, 
+            clearlang = true]{biblatex}
+% Packages required by R packages
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{makecell}
+\usepackage{threeparttable}
+\usepackage{floatrow}
+\floatsetup[figure]{capposition=top}
+\floatsetup[table]{capposition=top}
+\usepackage{dcolumn}
+% Packages required by bookdown
+\usepackage{framed} % For shading the code snippets
+
+
+%%%%% CUSTOMIZE BIBLIOGRAPHY FIELDS
+\newcommand*{\bibtitle}{References}
+% Display all authors with surnames followed by first names
+\DeclareNameAlias{author}{family-given}
+% Do not print notes or language fields
+\AtEveryBibitem{%
+  \clearlist{language}%
+  \clearfield{note}
+}
+% Suppress "in" field in articles
+\renewbibmacro{in:}{\ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+% Print volume(issue):pages
+\DeclareFieldFormat[article, inbook, incollection, inproceedings, misc, thesis, unpublished]{title}{#1}
+\DeclareFieldFormat[article, inbook, incollection, inproceedings, misc, thesis, unpublished]{volume}{#1}
+\DeclareFieldFormat[article, inbook, incollection, inproceedings, misc, thesis, unpublished]{number}{\mkbibparens{#1}} 
+\DeclareFieldFormat[article]{pages}{#1}
+\DeclareFieldFormat[inproceedings, incollection, inbook]{pages}{p. #1}
+\renewbibmacro*{volume+number+eid}{
+  \printfield{volume}%
+  \printfield{number}%
+  \printunit{\addcolon}
+}
+
+% Attach bib file
+\addbibresource{references/biblio.bib}
+
+%%%%% CLEVEREF SETUP 
+\crefname{figure}{figure}{figures}
+\Crefname{figure}{Figure}{Figures}
+\crefname{equation}{equation}{equations}
+\Crefname{equation}{Equation}{Equations}
+
+%%%%% DOCUMENT TITLE PAGE INFORMATION
+\title{Title}
+\author{Nurfatima Jandarova}
+
+%%%%% GRAPHICS PATH
+\graphicspath{{results/plots/}}
+
+%%%%% OTHER MACROS
+% Superscripts shortcuts
+\renewcommand{\th}{\textsuperscript{th}} % ex: I won 4\th place
+\newcommand{\nd}{\textsuperscript{nd}}
+\newcommand{\st}{\textsuperscript{st}}
+\newcommand{\rd}{\textsuperscript{rd}}
+
+% Appendix wrapper
+\newcommand{\startappendices}{%
+  \begin{appendices}%
+  \setcounter{figure}{0}%
+  \setcounter{table}{0}%
+  \counterwithin{figure}{section}%
+  \counterwithin{table}{section}%
+}
+\newcommand{\finishappendices}{\end{appendices}}
+
+% Custom math symbols
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+
+% Code highlighting
+
+% UL 30 Nov 2018 pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+  
+%%%%% THE ACTUAL DOCUMENT STARTS HERE
+\begin{document}
+
+% Title page is created here
+\maketitle
+
+%%%%% ABSTRACT -- Nothing to do here except comment out if you don't want it.
+\begin{abstract}
+	
+\end{abstract}
+
+% This aligns the bottom of the text of each page.  It generally makes things look better.
+%\flushbottom
+
+% This is where the whole-document ToC appears:
+
+
+
+% Uncomment to generate a list of tables:
+
+% The Roman pages, like the Roman Empire, must come to its inevitable close.
+%\end{romanpages}
+
+% all your chapters and appendices will appear here
+\hypertarget{introduction}{%
+\section*{Introduction}\label{introduction}}
+\addcontentsline{toc}{section}{Introduction}
+
+\hypertarget{literature}{%
+\section*{Literature}\label{literature}}
+\addcontentsline{toc}{section}{Literature}
+
+\hypertarget{institutional-background}{%
+\section*{Institutional background}\label{institutional-background}}
+\addcontentsline{toc}{section}{Institutional background}
+
+\hypertarget{data}{%
+\section*{Data}\label{data}}
+\addcontentsline{toc}{section}{Data}
+
+\hypertarget{empirical-strategy}{%
+\section*{Empirical strategy}\label{empirical-strategy}}
+\addcontentsline{toc}{section}{Empirical strategy}
+
+\hypertarget{results-and-discussion}{%
+\section*{Results and discussion}\label{results-and-discussion}}
+\addcontentsline{toc}{section}{Results and discussion}
+
+\hypertarget{robustness-checks}{%
+\section*{Robustness checks}\label{robustness-checks}}
+\addcontentsline{toc}{section}{Robustness checks}
+
+\hypertarget{conclusion}{%
+\section*{Conclusion}\label{conclusion}}
+\addcontentsline{toc}{section}{Conclusion}
+
+\startappendices
+
+\finishappendices
+
+
+%%%%% REFERENCES
+
+\setlength{\baselineskip}{0pt} % JEM: Single-space References
+
+{\renewcommand*\MakeUppercase[1]{#1}%
+\printbibliography[heading=bibintoc,title={\bibtitle}]}
+
+\end{document}

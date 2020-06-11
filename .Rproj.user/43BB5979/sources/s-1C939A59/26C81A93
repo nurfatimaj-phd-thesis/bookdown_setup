@@ -1,0 +1,21 @@
+{
+    "id": "26C81A93",
+    "path": "~/Documents/Research/phd_thesis/bookdown_setup/bookdown/scripts_and_filters/wrap_lines.R",
+    "project_path": "bookdown/scripts_and_filters/wrap_lines.R",
+    "type": "r_source",
+    "hash": "3830205895",
+    "contents": "",
+    "dirty": false,
+    "created": 1591907802392.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {},
+    "folds": "",
+    "lastKnownWriteTime": 1591907502,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1591907502,
+    "read_only": false,
+    "read_only_alternatives": []
+}
