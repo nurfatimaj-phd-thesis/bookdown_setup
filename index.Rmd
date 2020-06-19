@@ -72,7 +72,7 @@ documentclass: article
 
 ```{r set-global-chunk-options, include=FALSE}
 knitr::opts_chunk$set(
-  echo = FALSE, message=FALSE, warning=FALSE, paged.print=FALSE 
+  echo = FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, cache = TRUE
 )
 ```
 
