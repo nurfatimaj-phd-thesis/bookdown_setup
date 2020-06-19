@@ -5,7 +5,7 @@
 title: Title
 author: Nurfatima Jandarova
 abstract: |
-  `r paste(readLines("text/front-and-back-matter/_abstract.Rmd"), collapse = '\n  ')`
+  `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = '\n  ')`
 #acknowledgements:
 #dedication: 
 #abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with abbreviations
@@ -50,14 +50,14 @@ params:
 #####################
 output:
   bookdown::pdf_book:
-    template: text/templates/article_template.tex
+    template: templates/article_template.tex
     latex_engine: pdflatex
     keep_tex: true
     citation_package: biblatex 
     pandoc_args: --top-level-division=section 
     #pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua"] #remove filter to stop applying blue background to inline corrections
   bookdown::gitbook:
-    css: text/templates/style.css
+    css: templates/style.css
     config:
       sharing:
         facebook: false
@@ -119,5 +119,5 @@ scale_colour_discrete <- function(...) scale_colour_brewer(..., palette="RdBu")
 scale_fill_discrete <- function(...) scale_fill_brewer(... , palette="RdBu")
 ```
 
-```{r introduction, child = 'text/_00-introduction.Rmd'}
+```{r introduction, child = '_00-introduction.Rmd'}
 ```

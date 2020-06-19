@@ -1,8 +1,8 @@
-output_path = text/output/
+output_path = text/
 
 pdf:
 	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")'
-	rm -f *.log *.mtc* *.maf *.aux *.bcf *.lof *.lot *.out *.toc *.bib *.run.xml text/front-and-back-matter/abbreviations.aux
+	rm -f *.log *.mtc* *.maf *.aux *.bcf *.lof *.lot *.out *.toc *.bib *.run.xml front-and-back-matter/abbreviations.aux
 	Rscript -e 'browseURL(paste(getwd(), list.files("$(output_path)", pattern = "*.pdf", full.names = TRUE)[[1]], sep = "/"))'
 
 gitbook:
