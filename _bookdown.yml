@@ -9,7 +9,7 @@ book_filename:
 
 # If you specify a sub directory with rmd_subdir, then bookdown will search through this
 # folder too (order here affects the order of sections in the document!)
-rmd_subdir: ["front-and-back-matter"]
+rmd_subdir: []
 
 # Alternatively, you can comment out rmd_subdir and specify manually what files to include with rmd_files
 #rmd_files: ["index.Rmd", "01-rmd-basics-markdown.Rmd", "02-rmd-basics-code.Rmd", "03-rmd-basics-cites-and-refs.Rmd", "04-oxthesis.Rmd", "05-conclusion.Rmd", "front-and-back-matter/98-appendices.Rmd", "front-and-back-matter/99-references.Rmd"]

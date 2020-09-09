@@ -5,9 +5,9 @@
 title: Title
 author: Nurfatima Jandarova
 abstract: |
-  `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = '\n  ')`
+  `r paste(readLines("_abstract.Rmd"), collapse = '\n  ')`
 #acknowledgements:
-#dedication: 
+#dedication:
 #abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with abbreviations
 
 #######################
@@ -53,8 +53,8 @@ output:
     template: templates/article_template.tex
     latex_engine: pdflatex
     keep_tex: true
-    citation_package: biblatex 
-    pandoc_args: --top-level-division=section 
+    citation_package: biblatex
+    pandoc_args: --top-level-division=section
     #pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua"] #remove filter to stop applying blue background to inline corrections
   bookdown::gitbook:
     css: templates/style.css
@@ -102,12 +102,12 @@ library(survey)
 library(stargazer)
 
 # Set the theme
-my_theme <- theme_light() + 
-  theme(panel.border = element_blank(), 
-        axis.line = element_line(colour = 'black'), 
+my_theme <- theme_light() +
+  theme(panel.border = element_blank(),
+        axis.line = element_line(colour = 'black'),
         panel.grid = element_line(colour = '#d9e6eb', linetype = 2), # Stata's bluishgray
-        strip.background = element_blank(), 
-        strip.text = element_text(colour = 'black'), 
+        strip.background = element_blank(),
+        strip.text = element_text(colour = 'black'),
         legend.position = 'bottom')
 theme_set(my_theme)  
 
