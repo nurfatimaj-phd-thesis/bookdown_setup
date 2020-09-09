@@ -50,6 +50,12 @@ knitr::knit_hooks$set(chunk = function(x, options) {
     latex_tabnote <- paste0("\\\\begin\\{flushleft\\}\\\\scriptsize\\\\textit\\{Notes:\\} ", options$table.notes, "\\\\end\\{flushleft\\}\\1")
     txt <- gsub('(\\\\end\\{table\\})', latex_tabnote, txt)
   }
-
+  
+  # add chunk option 'table.font.size' which adds the specified latex font size in front of \begin{tabular}
+  if (!is.null(options$table.font.size)) {
+    txt <- gsub('(\\\\begin\\{tabular\\})', 
+                paste0('\\\\', options$table.font.size, '\\1'), txt)
+  }
+  
   return(txt)  # pass to default hook
 })
