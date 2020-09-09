@@ -1,17 +1,17 @@
-\documentclass[a4paper, 11pt]{article}
+\documentclass[a4paper, 12pt]{article}
 
 \usepackage[normalem]{ulem}
 \usepackage[colorlinks, 
             linktoc = true, 
             allcolors = blue, 
             bookmarksopen = true, 
-            pdfpagelabels,
-            hidelinks = $hidelinks$]{hyperref}
+            pdfpagelabels]{hyperref}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{dsfont}
 \usepackage{cleveref}
 \usepackage{graphicx}
-\usepackage{appendix}
+\usepackage[title]{appendix}
 \usepackage{color}
 \usepackage[format=hang, 
 			      labelfont = bf, 
@@ -19,11 +19,15 @@
 \usepackage{subcaption}
 \usepackage{ragged2e}
 \usepackage{rotating}
-\usepackage[top = 2cm, bottom = 2cm, left = 3cm, right = 2cm]{geometry}
-%\usepackage{float}
-\usepackage{tikz}
-\usetikzlibrary{positioning, decorations.pathreplacing, calc}
-\usepackage[style = authoryear, 
+\usepackage[top = 1in, 
+            left = 1in, 
+            right = 1in, 
+            bottom = 1in, 
+            headheight = 24pt, 
+            headsep = 14pt, 
+            footskip = 15pt]{geometry}
+\usepackage{setspace}
+\usepackage[style = $if(bib-style)$$bib-style$$else$authoryear$endif$, 
             giveninits = true, 
             date = year, 
             sorting = nyt, 
@@ -46,8 +50,9 @@
 \usepackage{floatrow}
 \usepackage{dcolumn}
 \usepackage{tabu}
+\usepackage{titlesec}
 
-\floatsetup[figure]{capposition=top}
+\floatsetup[figure]{capposition=below}
 \floatsetup[table]{capposition=top}
 
 % Packages required by bookdown
@@ -83,8 +88,6 @@
 %%%%% CLEVEREF SETUP 
 \crefname{figure}{figure}{figures}
 \Crefname{figure}{Figure}{Figures}
-\crefname{table}{table}{tables}
-\Crefname{table}{Table}{Tables}
 \crefname{equation}{equation}{equations}
 \Crefname{equation}{Equation}{Equations}
 
@@ -109,6 +112,7 @@
   \setcounter{table}{0}%
   \counterwithin{figure}{section}%
   \counterwithin{table}{section}%
+  \onehalfspacing
 }
 \newcommand{\finishappendices}{\end{appendices}}
 
@@ -132,7 +136,26 @@ $endif$
 
 % UL 30 Nov 2018 pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-  
+
+%%%%% AER formatting guidelines
+% Section numbering with roman numerals
+\renewcommand{\thesection}{\Roman{section}}
+% Subsection numbering with capital letters
+\renewcommand{\thesubsection}{\Alph{subsection}}
+% Subsubsection numbering with arabic numerals
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+% 1.5 linespace in draft mode
+$if(draft)$\setstretch{1.5}$endif$
+\topskip = 11.74pt
+\maxdepth = 0.5\topskip
+
+
+% But keep single spacing in tables (not AER specified)
+\AtBeginEnvironment{tabular}{\singlespacing}
+
+% Paragraph heading style
+\titleformat*{\paragraph}{$if(paragraph-style)$$paragraph-style$$else$\itshape$endif$}
+
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
 
@@ -168,12 +191,5 @@ $endif$
 % all your chapters and appendices will appear here
 $body$
 
-
-%%%%% REFERENCES
-
-\setlength{\baselineskip}{0pt} % JEM: Single-space References
-
-{\renewcommand*\MakeUppercase[1]{#1}%
-\printbibliography[heading=bibintoc,title={\bibtitle}]}
 
 \end{document}
