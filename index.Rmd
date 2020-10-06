@@ -50,7 +50,7 @@ params:
 #####################
 output:
   bookdown::pdf_book:
-    template: templates/article_template.tex
+    template: templates/aea_template.tex
     latex_engine: pdflatex
     keep_tex: true
     citation_package: biblatex

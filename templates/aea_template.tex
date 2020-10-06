@@ -1,32 +1,5 @@
-\documentclass[a4paper, 12pt]{article}
+\documentclass[AER, $if(draft)$draftmode$endif$]{templates/AEA}
 
-\usepackage[normalem]{ulem}
-\usepackage[colorlinks,
-            linktoc = true,
-            allcolors = blue,
-            bookmarksopen = true,
-            pdfpagelabels]{hyperref}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{dsfont}
-\usepackage{cleveref}
-\usepackage{graphicx}
-\usepackage[title]{appendix}
-\usepackage{color}
-\usepackage[format=hang,
-			      labelfont = bf,
-			      textfont = bf]{caption}
-\usepackage{subcaption}
-\usepackage{ragged2e}
-\usepackage{rotating}
-\usepackage[top = 1in,
-            left = 1in,
-            right = 1in,
-            bottom = 1in,
-            headheight = 24pt,
-            headsep = 14pt,
-            footskip = 15pt]{geometry}
-\usepackage{setspace}
 \usepackage[style = $if(bib-style)$$bib-style$$else$authoryear$endif$,
             giveninits = true,
             date = year,
@@ -40,17 +13,44 @@
             related = false,
             dashed = false,
             clearlang = true]{biblatex}
+
+% \usepackage[normalem]{ulem}
+\usepackage[colorlinks,
+            linktoc = true,
+            allcolors = blue,
+            bookmarksopen = true,
+            pdfpagelabels]{hyperref}
+
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage[title]{appendix}
+\usepackage{color}
+\usepackage[format=hang,
+			      labelfont = bf,
+			      textfont = bf]{caption}
+\usepackage{subcaption}
+\usepackage{ragged2e}
+\usepackage{rotating}
+% \usepackage[top = 1in,
+%             left = 1in,
+%             right = 1in,
+%             bottom = 1in,
+%             headheight = 24pt,
+%             headsep = 14pt,
+%             footskip = 15pt]{geometry}
+
 % Packages required by R packages
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{colortbl}
 \usepackage{pdflscape}
 \usepackage{makecell}
-\usepackage{threeparttable}
+% \usepackage{threeparttable}
 \usepackage{floatrow}
 \usepackage{dcolumn}
 \usepackage{tabu}
-\usepackage{titlesec}
+% \usepackage{titlesec}
 
 \floatsetup[figure]{capposition=below}
 \floatsetup[table]{capposition=top}
@@ -85,15 +85,9 @@
 % Attach bib file
 \addbibresource{$bibliography$}
 
-%%%%% CLEVEREF SETUP
-\crefname{figure}{figure}{figures}
-\Crefname{figure}{Figure}{Figures}
-\crefname{equation}{equation}{equations}
-\Crefname{equation}{Equation}{Equations}
-
 %%%%% DOCUMENT TITLE PAGE INFORMATION
 \title{$title$}
-\author{$for(author)$$author$$sep$ \and $endfor$}
+\author{$for(author)$$author$$sep$ \\ $endfor$}
 
 %%%%% GRAPHICS PATH
 \graphicspath{{$graphicspath$}}
@@ -106,15 +100,15 @@
 \newcommand{\rd}{\textsuperscript{rd}}
 
 % Appendix wrapper
-\newcommand{\startappendices}{%
-  \begin{appendices}%
-  \setcounter{figure}{0}%
-  \setcounter{table}{0}%
-  \counterwithin{figure}{section}%
-  \counterwithin{table}{section}%
-  \onehalfspacing
-}
-\newcommand{\finishappendices}{\end{appendices}}
+% \newcommand{\startappendices}{%
+%   \begin{appendices}%
+%   \setcounter{figure}{0}%
+%   \setcounter{table}{0}%
+%   \counterwithin{figure}{section}%
+%   \counterwithin{table}{section}%
+%   \onehalfspacing
+% }
+% \newcommand{\finishappendices}{\end{appendices}}
 
 % Custom math symbols
 \DeclareMathOperator{\arcsinh}{arcsinh}
@@ -137,24 +131,24 @@ $endif$
 % UL 30 Nov 2018 pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-%%%%% AER formatting guidelines
-% Section numbering with roman numerals
-\renewcommand{\thesection}{\Roman{section}}
-% Subsection numbering with capital letters
-\renewcommand{\thesubsection}{\Alph{subsection}}
-% Subsubsection numbering with arabic numerals
-\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+% %%%%% AER formatting guidelines
+% % Section numbering with roman numerals
+% \renewcommand{\thesection}{\Roman{section}}
+% % Subsection numbering with capital letters
+% \renewcommand{\thesubsection}{\Alph{subsection}}
+% % Subsubsection numbering with arabic numerals
+% \renewcommand{\thesubsubsection}{\arabic{subsubsection}}
 % 1.5 linespace in draft mode
-$if(draft)$\setstretch{1.5}$endif$
-\topskip = 11.74pt
-\maxdepth = 0.5\topskip
+$if(draft)$\draftSpacing{1.5}$endif$
+% \topskip = 11.74pt
+% \maxdepth = 0.5\topskip
 
 
 % But keep single spacing in tables (not AER specified)
-\AtBeginEnvironment{tabular}{\singlespacing}
+% \AtBeginEnvironment{tabular}{\singlespacing}
 
 % Paragraph heading style
-\titleformat*{\paragraph}{$if(paragraph-style)$$paragraph-style$$else$\itshape$endif$}
+% \titleformat*{\paragraph}{$if(paragraph-style)$$paragraph-style$$else$\itshape$endif$}
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
