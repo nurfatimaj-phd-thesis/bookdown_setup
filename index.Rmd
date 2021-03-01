@@ -3,59 +3,63 @@
 ## thesis metadata ##
 #####################
 title: Title
-author: Nurfatima Jandarova
+short: Short title for headings
+journal: "AER" # AER, AEJ, PP, JEL
+month: 
+year: 
+vol: 
+issue: 
+jel: 
+keywords: 
+issueName: 
+author: 
+  - name: author1
+    firstname: name1
+    surname: surname1
+    email: email1
+    affiliation: institution1
+  - name: author2
+    firstname: name2
+    surname: surname2
+    email: email2
+    affiliation: institution2
 abstract: |
   `r paste(readLines("_abstract.Rmd"), collapse = '\n  ')`
 #acknowledgements:
-#dedication:
-#abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with abbreviations
 
-#######################
-## bibliography path ##
-#######################
-bibliography: references/biblio.bib
-bibliography-heading-in-pdf: References
+################
+## Draft mode ##
+################
+draft: true # set formatting to draft mode (linespace to 1.5)?
 
-###################
-## path to plots ##
-###################
-graphicspath: |
-  ```{=latex}
-  results/plots/
-  ```
-
-#####################
-## PDF formatting  ##
-#####################
-abstractseparate: false  # include front page w/ abstract for examination schools?
-bib-humanities: true   #set to true if you want in-text references formatted as author-year
-doi-in-bibliography: false #set to true if you want DOI's to be shown in the bibliography
-url-in-bibliography: false #set to true if you want URL's to be shown in the bibliography
-draft: false # add as DRAFT mark in the footer?
-page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
-hidelinks: false #if false, the PDF output highlights clickable links with a colored border - you will probably want to set this to true for PDF version you wish to physically print
-toc: false # show table of contents?
-toc-depth: 2 # depth of heading to include in table of contents
-lof: false # list of figures in front matter?
-lot: false # list of tables in front matter?
-mini-toc: false  # mini-table of contents at start of each chapter? (this just prepares it; you must also add \minitoc after the chapter titles)
-mini-lot: false  # mini-list of tables by start of each chapter?
-mini-lof: false  # mini-list of figures by start of each chapter?
-
+########################
+## Global parameters  ##
+########################
 params:
   corrections: false # set false to stop applying blue background to blocks of corrections
+  decimal_digits: 3 # set number of decimal digits to use in printing output
 
 #####################
 ## output options  ##
 #####################
 output:
   bookdown::pdf_book:
-    template: templates/aea_template.tex
+    base_format: rticles::aea_article
     latex_engine: pdflatex
     keep_tex: true
     citation_package: biblatex
-    pandoc_args: --top-level-division=section
-    #pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua"] #remove filter to stop applying blue background to inline corrections
+    extra_dependencies:
+      hyperref: ['colorlinks = true', 'allcolors = blue', 'linktoc = true', 'bookmarksdepth = 3']
+      caption: ['format = hang', 'labelfont = bf', 'textfont = bf']
+      amsmath: null
+      amssymb: null
+      dsfont: null
+      graphicx: null
+      subcaption: null
+      ragged2e: null
+    includes:
+      in_header: 'templates/preamble.tex'
+    pandoc_args: ['--top-level-division=section', '--lua-filter=bookdown/scripts_and_filters/correction_filter.lua']
   bookdown::gitbook:
     css: templates/style.css
     config:
