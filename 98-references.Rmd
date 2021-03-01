@@ -1,4 +1,4 @@
 `r if(!knitr:::is_latex_output()) '# References {-}'`
 
 `r if(knitr:::is_latex_output()) '\\setlength{\\baselineskip}{0pt}'`
-`r if(knitr:::is_latex_output()) '\\renewcommand*\\MakeUppercase[1]{#1}\\printbibliography'`
+`r if(knitr:::is_latex_output()) '\\renewcommand*\\MakeUppercase[1]{#1}\\printbibliography[heading=bibintoc]'`

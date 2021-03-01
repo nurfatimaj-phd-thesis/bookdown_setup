@@ -14,10 +14,10 @@
 % variety of citation commands than latex supports natively. See below.
 
 % Uncomment the next line to use the natbib package with bibtex
-%\usepackage{natbib}
+% \usepackage{natbib}
 
 % Uncomment the next line to use the harvard package with bibtex
-%\usepackage[abbr]{harvard}
+% \usepackage[abbr]{harvard}
 
 % This command determines the leading (vertical space between lines) in draft mode
 % with 1.5 corresponding to "double" spacing.
@@ -25,14 +25,23 @@
 
 % Pandoc citation processing
 
-% Placement of captions in tables and figures
+\usepackage[colorlinks = true, allcolors = blue, linktoc = true, bookmarksdepth = 3]{hyperref}
+\usepackage[format = hang, labelfont = bf, textfont = bf]{caption}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{ragged2e}
 \usepackage{floatrow}
+
+\usepackage[style=chicago-authordate,backend = biber,related = false,sorting = nyt,includeall = false,giveninits = true,uniquename = mininit]{biblatex}
+\addbibresource{references/biblio.bib}
+
+
+% Placement of captions in tables and figures
 \floatsetup[figure]{capposition=below}
 \floatsetup[table]{capposition=top}
-
-% Add bibliography source
-\usepackage[authordate, backend = biber, related = false, sorting = nyt, includeall = false, giveninits = true, uniquename = mininit]{biblatex-chicago}
-\addbibresource{references/biblio.bib}
 
 % Display all authors with surnames followed by first names
 \DeclareNameAlias{author}{family-given}
@@ -46,44 +55,16 @@
 % Custom math symbols
 \DeclareMathOperator{\arcsinh}{arcsinh}
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\usepackage[colorlinks = true, allcolors = blue, linktoc = true, bookmarksdepth = 3]{hyperref}
-\usepackage[format = hang, labelfont = bf, textfont = bf]{caption}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{dsfont}
-\usepackage{graphicx}
-\usepackage{subcaption}
-\usepackage{ragged2e}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
-
-\usepackage{hyperref}
 
 \begin{document}
 
 \title{Title}
 \shortTitle{Short title for headings}
-% \author{Author1 and Author2\thanks{Surname1: affiliation1, address1, email1.
-% Surname2: affiliation2, address2, email2. Acknowledgements}}
-
-
 \author{
-  author1\\
-  author2\thanks{
-  surname1: institution1, \href{mailto:email1}{email1}.
-  surname2: institution2, \href{mailto:email2}{email2}.
+    author1\\
+    author2\thanks{
+surname1: institution1, email1.
+surname2: institution2, email2.
 }
 }
 
@@ -92,13 +73,13 @@
 \pubYear{}
 \pubVolume{}
 \pubIssue{}
+\issueName{}
 \JEL{}
 \Keywords{}
 
 \begin{abstract}
 
 \end{abstract}
-
 
 \maketitle
 
@@ -127,8 +108,10 @@
 \section{Conclusion}\label{conclusion}}
 
 \setlength{\baselineskip}{0pt}
-\renewcommand*\MakeUppercase[1]{#1}\printbibliography
+\renewcommand*\MakeUppercase[1]{#1}\printbibliography[heading=bibintoc]
 
 \appendix
+
+
 
 \end{document}

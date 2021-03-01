@@ -1,7 +1,5 @@
 ---
-#####################
-## thesis metadata ##
-#####################
+#### Metadata
 title: Title
 short: Short title for headings
 journal: "AER" # AER, AEJ, PP, JEL
@@ -25,26 +23,29 @@ author:
     affiliation: institution2
 abstract: |
   `r paste(readLines("_abstract.Rmd"), collapse = '\n  ')`
-#acknowledgements:
-
-################
-## Draft mode ##
-################
+acknowledgements:
 draft: true # set formatting to draft mode (linespace to 1.5)?
 
-########################
-## Global parameters  ##
-########################
+#### Global parameters
 params:
   corrections: false # set false to stop applying blue background to blocks of corrections
   decimal_digits: 3 # set number of decimal digits to use in printing output
 
-#####################
-## output options  ##
-#####################
+#### Bibliography options
+bibliography: references/biblio.bib
+biblio-style: chicago-authordate
+biblatexoptions:
+  - backend = biber
+  - related = false
+  - sorting = nyt
+  - includeall = false
+  - giveninits = true
+  - uniquename = mininit
+
+#### Output options
 output:
   bookdown::pdf_book:
-    base_format: rticles::aea_article
+    template: templates/template.tex
     latex_engine: pdflatex
     keep_tex: true
     citation_package: biblatex
@@ -57,8 +58,9 @@ output:
       graphicx: null
       subcaption: null
       ragged2e: null
+      floatrow: null
     includes:
-      in_header: 'templates/preamble.tex'
+      before_body: 'templates/preamble.tex'
     pandoc_args: ['--top-level-division=section', '--lua-filter=bookdown/scripts_and_filters/correction_filter.lua']
   bookdown::gitbook:
     css: templates/style.css
