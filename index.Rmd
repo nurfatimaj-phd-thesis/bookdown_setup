@@ -116,11 +116,10 @@ my_theme <- theme_light() +
 theme_set(my_theme)  
 
 # Set palette
-palette_burd <- c('#2166ac', '#b2182b', '#1b7837', '#e66101', '#01665e', '#c51b7d', '#762a83', '#8c510a', '#4d4d4d')
-shapes_burdlike <- c(1, 16, 3, 5, 18, 0, 15, 4, 2, 17, 20, 9, 12, 11, 10)
+palette_blindsafe <- c('#77AADD', '#EE8866', '#DDAA33', '#FFAABB', '#99DDFF', '#44BB99', '#BBCC33', '#AAAA00', '#DDDDDD')
 
-scale_colour_discrete <- function(...) scale_colour_brewer(..., palette="RdBu")
-scale_fill_discrete <- function(...) scale_fill_brewer(... , palette="RdBu")
+scale_colour_discrete <- function(...) scale_colour_manual(..., values = palette_blindsafe)
+scale_fill_discrete <- function(...) scale_fill_manual(... , values = palette_blindsafe)
 ```
 
 ```{r introduction, child = '_00-introduction.Rmd'}

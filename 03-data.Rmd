@@ -1,11 +1,11 @@
 ---
 output:
   bookdown::pdf_document2:
-    template: text/templates/article_template.tex
+    base_format: rticles::aea_article
   bookdown::word_document2: default
   bookdown::html_document2: default
 documentclass: book
-#bibliography: ../../references/biblio.bib
+bibliography: references/biblio.bib
 ---
 
-# Data {-}
+# Data 

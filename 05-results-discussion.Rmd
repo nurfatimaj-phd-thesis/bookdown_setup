@@ -1,14 +1,11 @@
 ---
-#########################################
-# options for knitting a single chapter #
-#########################################
 output:
   bookdown::html_document2: default
   bookdown::word_document2: default
   bookdown::pdf_document2:
-    template: text/templates/article_template.tex
+    base_format: rticles::aea_article
 documentclass: article
 bibliography: references/biblio.bib
 ---
-# Results and discussion {-}
+# Results and discussion 
 

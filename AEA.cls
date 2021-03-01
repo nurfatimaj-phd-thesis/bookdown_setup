@@ -18,7 +18,7 @@
 % ==============================================================================
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{templates/AEA}[\lastrev \space American Economic Association Article Classes]
+\ProvidesClass{AEA}[\lastrev \space American Economic Association Article Classes]
 \RequirePackage{multicol}
 \RequirePackage{setspace}
 \RequirePackage[leqno]{amsmath}

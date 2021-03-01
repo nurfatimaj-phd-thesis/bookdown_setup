@@ -39,22 +39,21 @@ knitr::knit_hooks$set(chunk = function(x, options) {
     txt <- gsub('(\\\\end\\{savequote\\})', latex_quote, txt)
   } 
   
-  # add chunk option 'fig.notes' which adds \begin{flushleft}\scriptsize\textit{Notes: }...\end{flushleft} to figures
+  # add chunk option 'fig.notes' which adds \begin{justify}\scriptsize\textit{Notes: }...\end{justify} to figures
   if (!is.null(options$fig.notes)) {
-    latex_fignote <- paste0("\\\\begin\\{flushleft\\}\\\\scriptsize\\\\textit\\{Notes:\\} ", options$fig.notes, "\\\\end\\{flushleft\\}\\1")
+    latex_fignote <- paste0("\\\\begin\\{justify\\}\\\\scriptsize\\\\textit\\{Notes:\\} ", options$fig.notes, "\\\\end\\{justify\\}\\1")
     txt <- gsub('(\\\\end\\{figure\\})', latex_fignote, txt) 
   }
   
-  # add chunk option 'table.notes' which adds \begin{flushleft}\scriptsize\textit{Notes: }...\end{flushleft} to tables
+  # add chunk option 'table.notes' which adds \begin{justify}\scriptsize\textit{Notes: }...\end{justify} to tables
   if (!is.null(options$table.notes)) {
-    latex_tabnote <- paste0("\\\\begin\\{flushleft\\}\\\\scriptsize\\\\textit\\{Notes:\\} ", options$table.notes, "\\\\end\\{flushleft\\}\\1")
+    latex_tabnote <- paste0("\\\\begin\\{justify\\}\\\\scriptsize\\\\textit\\{Notes:\\} ", options$table.notes, "\\\\end\\{justify\\}\\1")
     txt <- gsub('(\\\\end\\{table\\})', latex_tabnote, txt)
   }
   
   # add chunk option 'table.font.size' which adds the specified latex font size in front of \begin{tabular}
   if (!is.null(options$table.font.size)) {
-    txt <- gsub('(\\\\begin\\{tabular\\})', 
-                paste0('\\\\', options$table.font.size, '\\1'), txt)
+    txt <- gsub('(\\\\begin\\{tabular\\})', paste0('\\\\', options$table.font.size, '\\1'), txt)
   }
   
   return(txt)  # pass to default hook
