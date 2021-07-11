@@ -33,14 +33,7 @@ params:
 
 #### Bibliography options
 bibliography: references/biblio.bib
-biblio-style: chicago-authordate
 biblatexoptions:
-  - backend = biber
-  - related = false
-  - sorting = nyt
-  - includeall = false
-  - giveninits = true
-  - uniquename = mininit
 
 #### Output options
 output:
@@ -52,6 +45,16 @@ output:
     extra_dependencies:
       hyperref: ['colorlinks = true', 'allcolors = blue', 'linktoc = true', 'bookmarksdepth = 3']
       caption: ['format = hang', 'labelfont = bf', 'textfont = bf']
+      biblatex-chicago:
+        - authordate
+        - backend = biber
+        - related = false
+        - sorting = nyt
+        - includeall = false
+        - giveninits = true
+        - uniquename = mininit
+        - date = year
+        - noibid
       amsmath: null
       amssymb: null
       dsfont: null
@@ -78,7 +81,8 @@ documentclass: article
 
 ```{r set-global-chunk-options, include=FALSE}
 knitr::opts_chunk$set(
-  echo = FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, cache = TRUE
+  echo = FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, cache = TRUE, 
+  out.width = '90%', fig.pos = 'htbp!'
 )
 ```
 
@@ -94,34 +98,33 @@ If you need to create your own additional chunk options, edit the file scripts/c
 -->
 
 ```{r setup, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
-library(tidyverse)
-library(knitr)
-library(haven)
-library(kableExtra)
-library(labelled)
-library(RColorBrewer)
-library(forcats)
-library(MetricsWeighted)
-library(cluster)
-library(srvyr)
-library(survey)
-library(stargazer)
+library(tidyverse, quietly = TRUE)
+library(knitr, quietly = TRUE)
+library(haven, quietly = TRUE)
+library(kableExtra, quietly = TRUE)
+library(labelled, quietly = TRUE)
+library(RColorBrewer, quietly = TRUE)
+library(srvyr, quietly = TRUE)
+library(survey, quietly = TRUE)
+
+options(knitr.kable.NA = '')
+options(survey.lonely.psu = 'certainty')
 
 # Set the theme
 my_theme <- theme_light() +
   theme(panel.border = element_blank(),
         axis.line = element_line(colour = 'black'),
         panel.grid = element_line(colour = '#d9e6eb', linetype = 2), # Stata's bluishgray
-        strip.background = element_blank(),
         strip.text = element_text(colour = 'black'),
-        legend.position = 'bottom')
+        legend.position = 'bottom', 
+        text = element_text(size = 12))
 theme_set(my_theme)  
 
 # Set palette
-palette_blindsafe <- c('#77AADD', '#EE8866', '#DDAA33', '#FFAABB', '#99DDFF', '#44BB99', '#BBCC33', '#AAAA00', '#DDDDDD')
+palette_okabe_ito <- c('#56b4e9', '#e69f00', '#009e73', '#f0e442', '#0072b2', '#d55e00', '#cc79a7', '#000000')
 
-scale_colour_discrete <- function(...) scale_colour_manual(..., values = palette_blindsafe)
-scale_fill_discrete <- function(...) scale_fill_manual(... , values = palette_blindsafe)
+scale_colour_discrete <- function(...) scale_colour_manual(..., values = palette_okabe_ito)
+scale_fill_discrete <- function(...) scale_fill_manual(... , values = palette_okabe_ito)
 ```
 
 ```{r introduction, child = '_00-introduction.Rmd'}
